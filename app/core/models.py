@@ -3,12 +3,8 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser,BaseUserManager,PermissionsMixin
 
 class UserManager(BaseUserManager):
-
-
     def create_user(self,email,password=None, **extra_fields):
-
         """creates and saves a new user"""
-
         if not email:
             raise ValueError("users must have the email address")
         user=self.model(email=self.normalize_email(email), **extra_fields)
