@@ -6,12 +6,12 @@ class AdminSiteTests(TestCase):
     def setUp(self):
         self.client=Client()
         self.admin_user=get_user_model().objects.create_superuser(
-        email='admin@londonappdev.com',
+        email='admin@londonappdeveloper.com',
         password='password123'
         )
         self.client.force_login(self.admin_user)
         self.user=get_user_model().objects.create_user(
-        email ='admin@londonappdev.com',
+        email ='admin@londonappdevloper.com',
         password ='password123',
         name ='Test user full name'
         )
@@ -22,7 +22,7 @@ class AdminSiteTests(TestCase):
         res = self.client.get(url)
 
         self.assertContains(res,self.user.name)
-        self.assertContains(res,self.user.mail)
+        self.assertContains(res,self.user.email)
 
     def test_user_change_page(self):
         """Test that the user edit page works"""
@@ -37,4 +37,3 @@ class AdminSiteTests(TestCase):
         res = self.client.get(url)
 
         self.assertEqual(res.status_code, 200)
-        
